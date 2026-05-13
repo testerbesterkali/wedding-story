@@ -3,8 +3,28 @@ import { Music, Music2, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MusicPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    const startAudio = () => {
+      if (isPlaying && audioRef.current) {
+        audioRef.current.play().catch(() => {
+          // Still blocked, will try again on next interaction
+        });
+      }
+    };
+
+    window.addEventListener('click', startAudio, { once: true });
+    window.addEventListener('touchstart', startAudio, { once: true });
+    window.addEventListener('scroll', startAudio, { once: true });
+
+    return () => {
+      window.removeEventListener('click', startAudio);
+      window.removeEventListener('touchstart', startAudio);
+      window.removeEventListener('scroll', startAudio);
+    };
+  }, [isPlaying]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -16,7 +36,7 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-[8vh] right-[6vw] z-[9999]">
+    <div className="fixed bottom-[4vh] right-[6vw] z-[9999]">
       <audio
         ref={audioRef}
         loop
