@@ -88,7 +88,7 @@ const sections = [
       { src: 'images/section4/Treeup.png', y: ["-5%", "8%"] },
       { src: 'images/section4/couple.png', y: ["0%", "0%"] },
       { src: 'images/section4/Hanging flower.png', y: ["-10%", "15%"] },
-      { src: 'images/section4/Text.png', y: ["0%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section4/Text.png', y: ["7%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -97,7 +97,7 @@ const sections = [
       { src: 'images/section5/Background.png', y: ["0%", "0%"] },
       { src: 'images/section5/lantern.png', y: ["0%", "0%"], className: 'animate-sparkle' },
       { src: 'images/section5/Couple.png', y: ["0%", "0%"] },
-      { src: 'images/section5/Text.png', y: ["0%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section5/Text.png', y: ["10%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -105,7 +105,7 @@ const sections = [
     layers: [
       { src: 'images/section6/Background.png', y: ["0%", "0%"] },
       { src: 'images/section6/Couple.png', y: ["0%", "0%"] },
-      { src: 'images/section6/text.png', y: ["0%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section6/text.png', y: ["10%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -136,7 +136,7 @@ function App() {
       {!isLoading && (
         <div className="relative">
           <IntroSection />
-          
+
           <div
             className="relative pointer-events-none w-full"
             style={{
@@ -187,7 +187,7 @@ function App() {
           ))}
 
           {/* Final Sequence Section - Focused Content */}
-          <SequenceSection 
+          <SequenceSection
             images={[
               'images/last/Image - 1.png',
               'images/last/Image - 2.png',
