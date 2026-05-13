@@ -23,16 +23,16 @@ const sections = [
         src: 'images/section1/Text.png',
         natural: true,
         className: "top-[15%] h-[30vh]",
-        y: ["100%", "0%"],
-        scale: [0.8, 0.9],
+        y: ["80%", "0%"],
+        scale: [1, 1],
         objectFit: 'contain'
       },
       {
         src: 'images/section1/Lanterns.png',
         natural: true,
         className: "top-[5%] h-[70vh]",
-        y: ["100%", "0%"],
-        scale: [0.6, 0.8],
+        y: ["60%", "0%"],
+        scale: [0.9, 1],
         imgClassName: 'animate-float opacity-70'
       },
       {
@@ -52,6 +52,14 @@ const sections = [
         objectFit: 'contain'
       },
       {
+        src: 'images/section1/railing.png',
+        natural: true,
+        className: "bottom-[0%] h-[20vh] w-full",
+        y: ["100%", "0%"],
+        scale: [1, 1],
+        objectFit: 'cover'
+      },
+      {
         src: 'images/section1/flowers on railing.png',
         natural: true,
         className: "bottom-[2%] h-[25vh]",
@@ -65,9 +73,9 @@ const sections = [
     id: '2',
     layers: [
       { src: 'images/section2/Background.png', y: ["0%", "0%"] },
-      { src: 'images/section2/Tree.png', y: ["-5%", "10%"] },
-      { src: 'images/section2/tree up.png', y: ["-8%", "12%"] },
-      { src: 'images/section2/Parents details.png', y: ["-2%", "2%"], scale: [0.98, 1.02, 1.02], initialY: 60 }
+      { src: 'images/section2/Tree.png', y: ["-5%", "10%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
+      { src: 'images/section2/tree up.png', y: ["-8%", "12%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
+      { src: 'images/section2/Parents details.png', y: ["-2%", "2%"], scale: [0.98, 1.02, 1.02], initialY: 60, reveal: true }
     ]
   },
   {
@@ -76,8 +84,8 @@ const sections = [
       { src: 'images/section3/Background.png', y: ["0%", "0%"] },
       { src: 'images/section3/Lights.png', y: ["-2%", "8%"], className: 'animate-sparkle' },
       { src: 'images/section3/Tree.png', y: ["-5%", "10%"] },
-      { src: 'images/section3/couple.png', y: ["0%", "0%"] },
-      { src: 'images/section3/text.png', y: ["-2%", "5%"] }
+      { src: 'images/section3/couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
+      { src: 'images/section3/text.png', y: ["-10%", "0%"], scale: [0.85, 0.85], objectFit: 'contain' }
     ]
   },
   {
@@ -85,10 +93,12 @@ const sections = [
     layers: [
       { src: 'images/section4/Background.png', y: ["0%", "0%"] },
       { src: 'images/section4/Fan.png', y: ["-2%", "6%"] },
-      { src: 'images/section4/Treeup.png', y: ["-5%", "8%"] },
-      { src: 'images/section4/couple.png', y: ["0%", "0%"] },
-      { src: 'images/section4/Hanging flower.png', y: ["-10%", "15%"] },
-      { src: 'images/section4/Text.png', y: ["7%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section4/Treeup.png', y: ["-5%", "8%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
+      { src: 'images/section4/couple.png', x: ["40%", "0%"], range: [0.3, 0.7] },
+      { src: 'images/section4/Hanging flower.png', y: ["-10%", "15%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
+      { src: 'images/section4/Text.png', y: ["7%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' },
+      { src: 'images/section4/Left Tree.png', x: ["0%", "-100%"], range: [0.4, 0.5], className: "z-50" },
+      { src: 'images/section4/Right Tree.png', x: ["0%", "100%"], range: [0.4, 0.5], className: "z-50" }
     ]
   },
   {
@@ -96,16 +106,16 @@ const sections = [
     layers: [
       { src: 'images/section5/Background.png', y: ["0%", "0%"] },
       { src: 'images/section5/lantern.png', y: ["0%", "0%"], className: 'animate-sparkle' },
-      { src: 'images/section5/Couple.png', y: ["0%", "0%"] },
-      { src: 'images/section5/Text.png', y: ["10%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section5/Couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
+      { src: 'images/section5/Text.png', y: ["-6%", "0%"], scale: [0.85, 0.85], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
     id: '6',
     layers: [
       { src: 'images/section6/Background.png', y: ["0%", "0%"] },
-      { src: 'images/section6/Couple.png', y: ["0%", "0%"] },
-      { src: 'images/section6/text.png', y: ["10%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section6/Couple.png', y: ["30%", "0%"], range: [0.1, 0.5] },
+      { src: 'images/section6/text.png', y: ["15%", "0%"], scale: [1, 1], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -185,6 +195,20 @@ function App() {
               )}
             </React.Fragment>
           ))}
+
+          <div
+            className="relative pointer-events-none w-full"
+            style={{
+              height: '3rem',
+              marginTop: '-1.5rem',
+              marginBottom: '-1.5rem',
+              zIndex: 70,
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              maskImage: 'linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)',
+            }}
+          />
 
           {/* Final Sequence Section - Focused Content */}
           <SequenceSection

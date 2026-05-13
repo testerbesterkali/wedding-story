@@ -17,10 +17,12 @@ const ScratchReveal = ({ className }) => {
     const rect = container.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
 
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
 
     const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
 
     // Golden foil gradient
     const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
@@ -32,8 +34,9 @@ const ScratchReveal = ({ className }) => {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, rect.width, rect.height);
 
-    // Shimmer sparkles
-    for (let i = 0; i < 4000; i++) {
+    // Shimmer sparkles - adjusted for DPI
+    const sparkleCount = Math.min(4000, rect.width * rect.height * 0.1);
+    for (let i = 0; i < sparkleCount; i++) {
       const x = Math.random() * rect.width;
       const y = Math.random() * rect.height;
       const alpha = Math.random() * 0.35;
@@ -44,11 +47,11 @@ const ScratchReveal = ({ className }) => {
     // Decorative text
     ctx.fillStyle = 'rgba(100, 70, 20, 0.5)';
     ctx.textAlign = 'center';
-    ctx.font = `bold ${Math.min(rect.width * 0.04, 14)}px serif`;
+    ctx.font = `bold ${Math.min(rect.width * 0.05, 18)}px serif`;
     ctx.fillText('✦ Reveal Venue ✦', rect.width / 2, rect.height / 2 - 2);
-    ctx.font = `${Math.min(rect.width * 0.025, 10)}px serif`;
+    ctx.font = `${Math.min(rect.width * 0.035, 12)}px serif`;
     ctx.fillStyle = 'rgba(100, 70, 20, 0.35)';
-    ctx.fillText('Swipe to unveil', rect.width / 2, rect.height / 2 + 15);
+    ctx.fillText('Swipe to unveil', rect.width / 2, rect.height / 2 + 18);
 
     setReady(true);
   }, []);

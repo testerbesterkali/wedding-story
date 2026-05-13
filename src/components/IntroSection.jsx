@@ -127,29 +127,39 @@ const IntroSection = () => {
           />
         </div>
 
-        {/* 7. Foreground Parallax (Trees & Railing) - Moving with background speed */}
+        {/* 7. Foreground Parallax (Tree Elements) */}
         <motion.div
           style={{ y: buildingY }}
-          className="absolute inset-0 z-[45] flex items-end justify-center pointer-events-none"
+          className="absolute inset-0 z-[65] flex items-end justify-center pointer-events-none"
         >
-          {/* Tree Layers */}
+          {/* Tree Lights Base */}
           <img
             src={getPath('Lights on Trees.png')}
-            className="absolute inset-0 w-full h-full object-cover object-bottom opacity-80"
+            className="absolute inset-0 w-full h-full object-cover object-bottom opacity-90"
             alt=""
           />
+          {/* Tree Flowers - Sitting ON TOP of lights */}
           <img
             src={getPath('Flower On trees.png')}
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
-            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-bottom z-10"
+            alt="Tree Flowers"
           />
 
-          {/* Railing */}
-          <img
-            src={getPath('flowers on railing.png')}
-            className="w-full h-[30%] object-cover object-bottom"
-            alt=""
-          />
+          {/* Railing & Flowers Container */}
+          <div className="absolute inset-x-0 bottom-0 w-full h-[22vh] flex items-end justify-center z-20">
+            {/* Base Railing */}
+            <img
+              src={getPath('railing.png')}
+              className="absolute bottom-0 w-full h-full object-cover object-bottom"
+              alt="Railing"
+            />
+            {/* Flowers on Railing */}
+            <img
+              src={getPath('flowers on railing.png')}
+              className="absolute bottom-0 w-full h-[110%] object-cover object-bottom"
+              alt="Flowers on Railing"
+            />
+          </div>
         </motion.div>
 
         {/* Subtle Vignette */}

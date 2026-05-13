@@ -20,7 +20,7 @@ const MusicPlayer = () => {
       <audio
         ref={audioRef}
         loop
-        src="https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3" // Calm Piano for Wedding
+        src={`${import.meta.env.BASE_URL}music.mp3`}
       />
       
       <motion.button
@@ -69,7 +69,7 @@ const MusicPlayer = () => {
             exit={{ opacity: 0, y: 10 }}
             className="absolute bottom-full right-0 mb-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] text-white/80 whitespace-nowrap tracking-[0.2em] uppercase border border-white/10"
           >
-            Calm Piano
+            O Rangrez
           </motion.div>
         )}
       </AnimatePresence>
