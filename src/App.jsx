@@ -24,7 +24,7 @@ const sections = [
         natural: true,
         className: "top-[15%] h-[30vh]",
         y: ["80%", "0%"],
-        scale: [1, 1],
+        scale: [2, 2],
         objectFit: 'contain'
       },
       {
@@ -85,7 +85,7 @@ const sections = [
       { src: 'images/section3/Lights.png', y: ["-2%", "8%"], className: 'animate-sparkle' },
       { src: 'images/section3/Tree.png', y: ["-5%", "10%"] },
       { src: 'images/section3/couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
-      { src: 'images/section3/text.png', y: ["-10%", "0%"], scale: [0.85, 0.85], objectFit: 'contain' }
+      { src: 'images/section3/text.png', y: ["2%", "-8%"], scale: [0.85, 0.85], objectFit: 'contain' }
     ]
   },
   {
@@ -96,7 +96,7 @@ const sections = [
       { src: 'images/section4/Treeup.png', y: ["-5%", "8%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
       { src: 'images/section4/couple.png', x: ["40%", "0%"], range: [0.3, 0.7] },
       { src: 'images/section4/Hanging flower.png', y: ["-10%", "15%"], className: "w-[115%] -left-[7.5%] top-0 h-full" },
-      { src: 'images/section4/Text.png', y: ["7%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' },
+      { src: 'images/section4/Text.png', y: ["0%", "-4%"], objectFit: 'object-contain', objectPosition: 'object-top' },
       { src: 'images/section4/Left Tree.png', x: ["0%", "-100%"], range: [0.4, 0.5], className: "z-50" },
       { src: 'images/section4/Right Tree.png', x: ["0%", "100%"], range: [0.4, 0.5], className: "z-50" }
     ]
@@ -107,7 +107,7 @@ const sections = [
       { src: 'images/section5/Background.png', y: ["0%", "0%"] },
       { src: 'images/section5/lantern.png', y: ["0%", "0%"], className: 'animate-sparkle' },
       { src: 'images/section5/Couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
-      { src: 'images/section5/Text.png', y: ["-6%", "0%"], scale: [0.85, 0.85], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section5/Text.png', y: ["2%", "-8%"], scale: [0.85, 0.85], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -115,14 +115,14 @@ const sections = [
     layers: [
       { src: 'images/section6/Background.png', y: ["0%", "0%"] },
       { src: 'images/section6/Couple.png', y: ["30%", "0%"], range: [0.1, 0.5] },
-      { src: 'images/section6/text.png', y: ["15%", "0%"], scale: [1, 1], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section6/text.png', y: ["8%", "-8%"], scale: [1, 1], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
     id: '7',
     layers: [
       { src: 'images/section7/Background.png', y: ["0%", "0%"] },
-      { src: 'images/section7/Text_v2.png', y: ["15%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section7/Text_v2.png', y: ["4%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   }
 ];

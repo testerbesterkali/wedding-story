@@ -45,13 +45,11 @@ const ScratchReveal = ({ className }) => {
     }
 
     // Decorative text
-    ctx.fillStyle = 'rgba(100, 70, 20, 0.5)';
+    ctx.fillStyle = 'rgba(100, 70, 20, 0.6)';
     ctx.textAlign = 'center';
-    ctx.font = `bold ${Math.min(rect.width * 0.05, 18)}px serif`;
-    ctx.fillText('✦ Reveal Venue ✦', rect.width / 2, rect.height / 2 - 2);
-    ctx.font = `${Math.min(rect.width * 0.035, 12)}px serif`;
-    ctx.fillStyle = 'rgba(100, 70, 20, 0.35)';
-    ctx.fillText('Swipe to unveil', rect.width / 2, rect.height / 2 + 18);
+    ctx.textBaseline = 'middle';
+    ctx.font = `bold ${Math.min(rect.width * 0.06, 20)}px serif`;
+    ctx.fillText('Scratch to Reveal', rect.width / 2, rect.height / 2);
 
     setReady(true);
   }, []);

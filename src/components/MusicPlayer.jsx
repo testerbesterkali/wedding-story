@@ -80,19 +80,6 @@ const MusicPlayer = () => {
           />
         )}
       </motion.button>
-      
-      <AnimatePresence>
-        {isPlaying && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-full right-0 mb-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] text-white/80 whitespace-nowrap tracking-[0.2em] uppercase border border-white/10"
-          >
-            O Rangrez
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

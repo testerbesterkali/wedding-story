@@ -41,8 +41,8 @@ const MemoryCard = ({ src, delay = 0, direction = 'right', className }) => {
 
 const SequenceSection = ({ images, textImage }) => {
   return (
-    <section className="relative w-full bg-white pt-16 pb-32 px-6">
-      <div className="max-w-xl mx-auto flex flex-col items-center w-full px-4 relative z-10 space-y-3">
+    <section className="relative w-full bg-white pt-16 pb-2 px-2">
+      <div className="max-w-2xl mx-auto flex flex-col items-center w-full px-0 relative z-10 space-y-3">
 
         {/* Memory Sequence */}
         {images.map((img, i) => (
@@ -65,7 +65,7 @@ const SequenceSection = ({ images, textImage }) => {
           >
             <img
               src={textImage.startsWith('/') ? `${import.meta.env.BASE_URL}${textImage.slice(1)}` : `${import.meta.env.BASE_URL}${textImage}`}
-              className="w-full h-auto object-contain px-2 mb-2"
+              className="w-full h-auto object-contain mb-2"
               alt="Closing Message"
             />
 
