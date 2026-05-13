@@ -112,7 +112,7 @@ const sections = [
     id: '7',
     layers: [
       { src: 'images/section7/Background.png', y: ["0%", "0%"] },
-      { src: 'images/section7/Text_v2.png', y: ["0%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section7/Text_v2.png', y: ["15%", "0%"], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   }
 ];
