@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Countdown from './Countdown';
 import { cn } from '../utils/cn';
 
 const MemoryCard = ({ src, delay = 0, className }) => {
@@ -40,35 +41,36 @@ const MemoryCard = ({ src, delay = 0, className }) => {
 
 const SequenceSection = ({ images, textImage }) => {
   return (
-    <section className="relative w-full bg-white py-12 px-6">
+    <section className="relative w-full bg-white pt-0 pb-12 px-6">
       {/* 
           Restricting max-width to 'max-w-md' (approx 450px) to keep them "properly sized" 
           and prevent them from feeling too big on desktop screens.
       */}
-      <div className="max-w-md mx-auto flex flex-col items-center space-y-10 relative z-10">
+      <div className="max-w-md mx-auto flex flex-col items-center gap-0 px-4 relative z-10">
 
         {/* Memory Sequence */}
         {images.map((img, i) => (
           <MemoryCard key={i} src={img} delay={i * 0.2} />
         ))}
 
-        {/* Final Text Message */}
+        {/* Final Text Message & Countdown */}
         {textImage && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1.5, delay: 0.6 }
-            }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="pt-0 pb-0 flex justify-center w-full overflow-hidden"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="-mt-1 mb-12 px-0 py-0 text-center flex flex-col items-center w-full"
           >
             <img
               src={textImage.startsWith('/') ? `${import.meta.env.BASE_URL}${textImage.slice(1)}` : `${import.meta.env.BASE_URL}${textImage}`}
-              className="w-full h-[20vh] object-cover object-bottom drop-shadow-sm"
+              className="w-full h-full object-contain -mt-4 px-2"
               alt="Closing Message"
             />
+
+            <div className="w-full -mt-10">
+              <Countdown targetDate="2026-06-21T00:00:00" />
+            </div>
           </motion.div>
         )}
       </div>

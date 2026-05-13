@@ -138,7 +138,7 @@ function App() {
           <IntroSection />
           
           <div
-            className="relative pointer-events-none w-[110vw] -ml-[5vw]"
+            className="relative pointer-events-none w-full"
             style={{
               height: '3rem',
               marginTop: '-1.5rem',
@@ -170,7 +170,7 @@ function App() {
               </StorySection>
               {index < sections.length - 2 && (
                 <div
-                  className="relative pointer-events-none w-[110vw] -ml-[5vw]"
+                  className="relative pointer-events-none w-full"
                   style={{
                     height: '3rem',
                     marginTop: '-1.5rem',

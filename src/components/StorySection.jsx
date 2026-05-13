@@ -61,7 +61,7 @@ const StorySection = ({ image, layers, children, overlays, scratch, className, i
   return (
     <section 
       ref={containerRef}
-      className={cn("relative w-full overflow-hidden", className)}
+      className={cn("relative w-full overflow-hidden left-0", className)}
     >
       {/* Natural Scrolling Background (Non-sticky) */}
       {image && !stickyBg && (

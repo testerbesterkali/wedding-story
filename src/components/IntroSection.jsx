@@ -35,7 +35,7 @@ const IntroSection = () => {
   const getPath = (name) => `${baseUrl}images/intro/${name}`;
 
   return (
-    <section ref={containerRef} className="relative h-[100svh] w-full bg-[#0a0a1f] overflow-hidden">
+    <section ref={containerRef} className="relative h-[100svh] w-full bg-[#0a0a1f] overflow-hidden left-0">
       <div className="relative h-full w-full overflow-hidden">
 
         {/* 1. Background Sky */}
