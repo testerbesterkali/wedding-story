@@ -14,6 +14,8 @@ const CloudDivider = () => {
   const x1 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
   const x2 = useTransform(scrollYProgress, [0, 1], [10, -10]);
 
+  const cloudSrc = `${import.meta.env.BASE_URL}images/cloud.png`;
+
   return (
     <div 
       ref={ref}
@@ -33,7 +35,7 @@ const CloudDivider = () => {
         className="absolute inset-0 flex items-center justify-center overflow-visible"
       >
         <img 
-          src="/images/cloud.png" 
+          src={cloudSrc} 
           alt=""
           style={{
             width: '300%',
@@ -53,7 +55,7 @@ const CloudDivider = () => {
         className="absolute inset-0 flex items-center justify-center overflow-visible"
       >
         <img 
-          src="/images/cloud.png" 
+          src={cloudSrc} 
           alt=""
           style={{
             width: '300%',
@@ -71,7 +73,7 @@ const CloudDivider = () => {
         className="absolute inset-0 flex items-center justify-center overflow-visible"
       >
         <img 
-          src="/images/cloud.png" 
+          src={cloudSrc} 
           alt=""
           style={{
             width: '250%',

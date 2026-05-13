@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
+import { cn } from '../utils/cn';
 
-const ScratchReveal = () => {
+const ScratchReveal = ({ className }) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const isDrawing = useRef(false);
@@ -43,27 +44,11 @@ const ScratchReveal = () => {
     // Decorative text
     ctx.fillStyle = 'rgba(100, 70, 20, 0.5)';
     ctx.textAlign = 'center';
-    ctx.font = `bold ${Math.min(rect.width * 0.07, 32)}px serif`;
-    ctx.fillText('✦ Scratch to Reveal ✦', rect.width / 2, rect.height / 2 - 10);
-    ctx.font = `${Math.min(rect.width * 0.04, 18)}px serif`;
+    ctx.font = `bold ${Math.min(rect.width * 0.04, 14)}px serif`;
+    ctx.fillText('✦ Reveal Venue ✦', rect.width / 2, rect.height / 2 - 2);
+    ctx.font = `${Math.min(rect.width * 0.025, 10)}px serif`;
     ctx.fillStyle = 'rgba(100, 70, 20, 0.35)';
-    ctx.fillText('Swipe here to unveil', rect.width / 2, rect.height / 2 + 25);
-
-    // Corner brackets
-    const cs = 50;
-    ctx.strokeStyle = 'rgba(100, 70, 20, 0.35)';
-    ctx.lineWidth = 2;
-    [[20, 20+cs, 20, 20, 20+cs, 20],
-     [rect.width-20-cs, 20, rect.width-20, 20, rect.width-20, 20+cs],
-     [20, rect.height-20-cs, 20, rect.height-20, 20+cs, rect.height-20],
-     [rect.width-20-cs, rect.height-20, rect.width-20, rect.height-20, rect.width-20, rect.height-20-cs]
-    ].forEach(([x1,y1,x2,y2,x3,y3]) => {
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.lineTo(x3, y3);
-      ctx.stroke();
-    });
+    ctx.fillText('Swipe to unveil', rect.width / 2, rect.height / 2 + 15);
 
     setReady(true);
   }, []);
@@ -117,11 +102,11 @@ const ScratchReveal = () => {
 
     // Circle at current position
     ctx.beginPath();
-    ctx.arc(pos.x, pos.y, 45, 0, Math.PI * 2);
+    ctx.arc(pos.x, pos.y, 30, 0, Math.PI * 2);
     ctx.fill();
 
     // Smooth line from last position
-    ctx.lineWidth = 90;
+    ctx.lineWidth = 60;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.beginPath();
@@ -172,8 +157,8 @@ const ScratchReveal = () => {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0"
-      style={{ pointerEvents: revealed ? 'none' : 'auto', zIndex: 50 }}
+      className={cn("absolute z-50 overflow-hidden rounded-lg shadow-xl", className)}
+      style={{ pointerEvents: revealed ? 'none' : 'auto' }}
     >
       <canvas
         ref={canvasRef}

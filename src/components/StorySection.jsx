@@ -6,21 +6,48 @@ const ParallaxLayer = ({ layer, scrollYProgress, index }) => {
   const y = useTransform(scrollYProgress, [0, 1], layer.y || ["-5%", "5%"]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], layer.scale || [1, 1, 1]);
   
+  // Resolve the image path using Vite's BASE_URL
+  const baseUrl = import.meta.env.BASE_URL;
+  const src = layer.src.startsWith('http') || layer.src.startsWith('data:') 
+    ? layer.src 
+    : `${baseUrl}${layer.src.startsWith('/') ? layer.src.slice(1) : layer.src}`;
+
+  const initialY = layer.initialY || 50;
+
+  const isNatural = layer.natural;
+
   return (
     <motion.div 
+      initial={{ y: initialY, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ 
+        duration: 2, 
+        delay: index * 0.2,
+        ease: [0.22, 1, 0.36, 1]
+      }}
       style={{ y, scale, ...(layer.style || {}) }}
-      className={`absolute inset-0 z-10 ${layer.className || ''}`}
+      className={cn(
+        "absolute z-10",
+        isNatural ? "inset-x-0" : "inset-0",
+        layer.className || ''
+      )}
     >
       <img 
-        src={layer.src} 
+        src={src} 
         alt={`Layer ${index}`}
-        className={`w-full h-full ${layer.objectFit || 'object-cover'} ${layer.objectPosition || 'object-center'} ${layer.imgClassName || ''}`}
+        className={cn(
+          "w-full h-full",
+          layer.objectFit || (isNatural ? 'object-contain' : 'object-cover'),
+          layer.objectPosition || 'object-center',
+          layer.imgClassName || ''
+        )}
       />
     </motion.div>
   );
 };
 
-const StorySection = ({ image, layers, children, overlays, scratch, className, index }) => {
+const StorySection = ({ image, layers, children, overlays, scratch, className, index, stickyBg = true }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,19 +61,32 @@ const StorySection = ({ image, layers, children, overlays, scratch, className, i
   return (
     <section 
       ref={containerRef}
-      className={cn("relative h-[100svh] w-full overflow-hidden", className)}
+      className={cn("relative w-full overflow-hidden", className)}
     >
-      {/* Background Layers or Single Image */}
-      {layers ? (
-        layers.map((layer, i) => (
-          <ParallaxLayer 
-            key={i} 
-            layer={layer} 
-            scrollYProgress={scrollYProgress} 
-            index={i} 
+      {/* Natural Scrolling Background (Non-sticky) */}
+      {image && !stickyBg && (
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={image.startsWith('/') ? `${import.meta.env.BASE_URL}${image.slice(1)}` : `${import.meta.env.BASE_URL}${image}`} 
+            alt="Natural Background"
+            className="w-full h-full object-cover object-top"
           />
-        ))
-      ) : (
+        </div>
+      )}
+
+      {/* Natural Layers (Pinned to background) */}
+      {layers && layers.filter(l => l.natural).map((layer, i) => (
+        <ParallaxLayer 
+          key={`nat-${i}`} 
+          layer={layer} 
+          scrollYProgress={scrollYProgress} 
+          index={i} 
+        />
+      ))}
+
+      <div className="sticky top-0 h-[100svh] w-full z-10">
+      {/* Sticky Background Image (Classic Mode) */}
+      {image && stickyBg && !layers && (
         <motion.div 
           style={{ 
             y: useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]), 
@@ -55,12 +95,22 @@ const StorySection = ({ image, layers, children, overlays, scratch, className, i
           className="absolute inset-0 z-10"
         >
           <img 
-            src={image} 
-            alt={`Section ${index + 1}`}
+            src={image.startsWith('/') ? `${import.meta.env.BASE_URL}${image.slice(1)}` : `${import.meta.env.BASE_URL}${image}`} 
+            alt="Sticky Background"
             className="w-full h-full object-cover object-center"
           />
         </motion.div>
       )}
+
+      {/* Parallax Layers (Sticky to viewport) */}
+      {layers && layers.filter(l => !l.natural).map((layer, i) => (
+          <ParallaxLayer 
+            key={`sticky-${i}`} 
+            layer={layer} 
+            scrollYProgress={scrollYProgress} 
+            index={i} 
+          />
+        ))}
 
       {/* Full-section overlays (Lanterns, Firecrackers, etc.) */}
       {overlays && (
@@ -69,11 +119,27 @@ const StorySection = ({ image, layers, children, overlays, scratch, className, i
         </div>
       )}
 
-      {/* Scratch-to-reveal layer - rendered directly, with pointer events */}
+      {/* Scratch-to-reveal layer - now with entrance animation and parallax */}
       {scratch && (
-        <div className="absolute inset-0 z-[55]">
-          {scratch}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0 z-[55]"
+        >
+          <motion.div 
+            style={{ 
+              y: useTransform(scrollYProgress, [0, 1], ["-2%", "2%"]),
+              scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.98])
+            }}
+            className="absolute inset-0 pointer-events-none"
+          >
+            <div className="absolute inset-0 pointer-events-auto">
+              {scratch}
+            </div>
+          </motion.div>
+        </motion.div>
       )}
 
       {/* Interactive Content Overlay - Positioned at bottom */}
@@ -83,6 +149,7 @@ const StorySection = ({ image, layers, children, overlays, scratch, className, i
       >
         {children}
       </motion.div>
+      </div>
     </section>
   );
 };
