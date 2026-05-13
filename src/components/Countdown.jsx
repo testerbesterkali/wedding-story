@@ -34,12 +34,20 @@ const Countdown = ({ targetDate = "2026-06-21T00:00:00" }) => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const TimeUnit = ({ value, label }) => (
+  const TimeUnit = ({ value, label, isSeconds }) => (
     <div className="flex flex-col items-center mx-3 md:mx-6">
       <motion.div 
-        key={value}
-        initial={{ y: 5, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        key={isSeconds ? value : 'static'}
+        initial={isSeconds ? { opacity: 0.5, scale: 0.95 } : false}
+        animate={isSeconds ? { 
+          opacity: [1, 0.4, 1],
+          scale: [1, 1.05, 1],
+        } : { opacity: 1, scale: 1 }}
+        transition={isSeconds ? {
+          duration: 1,
+          repeat: Infinity,
+          ease: "easeInOut"
+        } : { duration: 0 }}
         className="text-4xl md:text-6xl font-light text-[#B8860B]"
       >
         {value.toString().padStart(2, '0')}
@@ -68,7 +76,7 @@ const Countdown = ({ targetDate = "2026-06-21T00:00:00" }) => {
         <div className="h-10 w-[1px] bg-[#B8860B]/30 mx-1 md:mx-2 self-start mt-2" />
         <TimeUnit value={timeLeft.minutes} label="Minutes" />
         <div className="h-10 w-[1px] bg-[#B8860B]/30 mx-1 md:mx-2 self-start mt-2" />
-        <TimeUnit value={timeLeft.seconds} label="Seconds" />
+        <TimeUnit value={timeLeft.seconds} label="Seconds" isSeconds />
       </div>
 
       <motion.div 
