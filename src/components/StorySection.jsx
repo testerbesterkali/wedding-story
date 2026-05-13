@@ -33,7 +33,7 @@ const ParallaxLayer = ({ layer, scrollYProgress, index, revealOpacity, revealY }
         ...(layer.style || {}) 
       }}
       className={cn(
-        "absolute z-10",
+        "absolute z-10 moving-layer",
         isNatural ? "inset-x-0" : "inset-0",
         layer.className || ''
       )}

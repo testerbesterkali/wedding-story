@@ -106,3 +106,14 @@ html.lenis {
 .animate-sparkle {
   animation: sparkle 3s ease-in-out infinite;
 }
+
+/* GPU acceleration to prevent flickers on reload/scroll */
+.moving-layer {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}

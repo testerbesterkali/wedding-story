@@ -41,7 +41,7 @@ const IntroSection = () => {
         {/* 1. Background Sky */}
         <motion.div
           style={{ y: skyY }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 moving-layer"
         >
           <img src={getPath('Background.png')} className="w-full h-full object-cover object-bottom" alt="" />
         </motion.div>
@@ -49,7 +49,7 @@ const IntroSection = () => {
         {/* 2. Hotel / Middle Background */}
         <motion.div
           style={{ y: buildingY }}
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 moving-layer"
         >
           <img src={getPath('Background copy.png')} className="w-full h-full object-cover object-bottom" alt="" />
         </motion.div>
@@ -66,7 +66,7 @@ const IntroSection = () => {
             animate={{ y: 0, opacity: 0.4 }}
             transition={{ duration: 4, delay: 0.2 }}
             src={getPath('Lanterns.png')}
-            className="w-full h-full object-contain absolute inset-0 scale-75 blur-[1px]"
+            className="w-full h-full object-contain absolute inset-0 scale-75 blur-[1px] moving-layer"
             alt=""
           />
 
@@ -77,7 +77,7 @@ const IntroSection = () => {
             animate={{ y: 0, opacity: 0.8 }}
             transition={{ duration: 3, delay: 0.5 }}
             src={getPath('Lanterns.png')}
-            className="w-full h-full object-contain absolute inset-0"
+            className="w-full h-full object-contain absolute inset-0 moving-layer"
             alt=""
           />
 
@@ -88,7 +88,7 @@ const IntroSection = () => {
             animate={{ y: 0, opacity: 0.7 }}
             transition={{ duration: 2.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
             src={getPath('Lanterns.png')}
-            className="w-full h-full object-contain absolute inset-0 scale-[1.8] brightness-125 saturate-150"
+            className="w-full h-full object-contain absolute inset-0 scale-[1.8] brightness-125 saturate-150 moving-layer"
             alt=""
           />
         </div>
@@ -99,7 +99,7 @@ const IntroSection = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 2.5, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none"
+          className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none moving-layer"
         >
           <img src={getPath('Text.png')} className="w-full max-w-[90%] md:max-w-[70%] h-auto object-contain" alt="Wedding Invitation" />
         </motion.div>
@@ -107,7 +107,7 @@ const IntroSection = () => {
         {/* 5. Couple (Parallax Layer) */}
         <motion.div
           style={{ y: coupleY }}
-          className="absolute inset-0 z-40 flex items-end justify-center pointer-events-none"
+          className="absolute inset-0 z-40 flex items-end justify-center pointer-events-none moving-layer"
         >
           <div className="relative w-full h-full flex items-end justify-center">
             <img src={getPath('Couplea.png')} className="w-auto h-[60%] md:h-[75%] object-contain" alt="" />
@@ -130,7 +130,7 @@ const IntroSection = () => {
         {/* 7. Foreground Parallax (Tree Elements) */}
         <motion.div
           style={{ y: buildingY }}
-          className="absolute inset-0 z-[65] flex items-end justify-center pointer-events-none"
+          className="absolute inset-0 z-[65] flex items-end justify-center pointer-events-none moving-layer"
         >
           {/* Tree Lights Base */}
           <img
