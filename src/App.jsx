@@ -11,6 +11,7 @@ import ScratchReveal from './components/ScratchReveal';
 import FallingFlowers from './components/FallingFlowers';
 import IntroSection from './components/IntroSection';
 import SequenceSection from './components/SequenceSection';
+import FireParticles from './components/FireParticles';
 import { useLenis } from './hooks/useLenis';
 
 const sections = [
@@ -85,7 +86,7 @@ const sections = [
       { src: 'images/section3/Lights.png', y: ["-2%", "8%"], className: 'animate-sparkle' },
       { src: 'images/section3/Tree.png', y: ["-5%", "10%"] },
       { src: 'images/section3/couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
-      { src: 'images/section3/text.png', y: ["2%", "-8%"], scale: [0.85, 0.85], objectFit: 'contain' }
+      { src: 'images/section3/text.png', y: ["2%", "-8%"], scale: [1, 1], objectFit: 'contain' }
     ]
   },
   {
@@ -107,7 +108,7 @@ const sections = [
       { src: 'images/section5/Background.png', y: ["0%", "0%"] },
       { src: 'images/section5/lantern.png', y: ["0%", "0%"], className: 'animate-sparkle' },
       { src: 'images/section5/Couple.png', x: ["40%", "0%"], range: [0.1, 0.5] },
-      { src: 'images/section5/Text.png', y: ["2%", "-8%"], scale: [0.85, 0.85], objectFit: 'object-contain', objectPosition: 'object-top' }
+      { src: 'images/section5/Text.png', y: ["2%", "-8%"], scale: [1, 1], objectFit: 'object-contain', objectPosition: 'object-top' }
     ]
   },
   {
@@ -116,7 +117,8 @@ const sections = [
       { src: 'images/section6/Background.png', y: ["0%", "0%"] },
       { src: 'images/section6/Couple.png', y: ["30%", "0%"], range: [0.1, 0.5] },
       { src: 'images/section6/text.png', y: ["8%", "-8%"], scale: [1, 1], objectFit: 'object-contain', objectPosition: 'object-top' }
-    ]
+    ],
+    overlays: <FireParticles />
   },
   {
     id: '7',
@@ -171,6 +173,7 @@ function App() {
                 stickyBg={section.stickyBg}
                 overlays={
                   <>
+                    {section.overlays}
                     {section.id === '4' && <FallingFlowers />}
                     {section.id === '5' && <Firecrackers />}
                   </>
